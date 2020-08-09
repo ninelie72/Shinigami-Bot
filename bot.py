@@ -22,14 +22,14 @@ def permission_check(ctx):
 @client.command()
 @commands.check(permission_check)
 async def purge(ctx):
-    channel = ctx.message.channel
-    date = ctx.message.created_at - datetime.timedelta(30)
+    channel = ctx.message.channel                                                      #Fetches channel, guild from which the command has been issued,
+    date = ctx.message.created_at - datetime.timedelta(30)                             #takes date 30 days prior, and the role immune to purge.
     guild = ctx.guild
     print(date)
     role = discord.utils.find(lambda i: i.id == 737360924276686929, guild.roles)
     active_users = dict()
 
-    async for message in channel.history(limit = None, after = date):
+    async for message in channel.history(limit = None, after = date):                  #Collects messages from the last 30 days, evaluates activity.
         if message.author in guild.members:
             if (not role in message.author.roles and not message.author.bot):
                 if not message.author.display_name in active_users:
@@ -39,7 +39,7 @@ async def purge(ctx):
     for x, y in active_users.items(): 
             await ctx.send(f'{x}: {y}')
 
-    for member in guild.members:
+    for member in guild.members:                                                       #Removes inactive users.
         if (not role in member.roles and not member.bot 
                 and not member.display_name in active_users):
             await ctx.send(f'Fuck you, {member.display_name}!')
