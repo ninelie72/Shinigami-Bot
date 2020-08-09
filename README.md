@@ -1,2 +1,2 @@
 # Shinigami-Bot
-Monogatari Server's dedicated purging bot.
+Join our server: https://discord.gg/jC5h3tt
