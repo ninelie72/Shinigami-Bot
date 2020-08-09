@@ -15,12 +15,12 @@ async def on_ready():
     print('Bot is ready.')
 
 #Owner's key.
-def permission_check(ctx):
+def owner_check(ctx):
     return ctx.author.id == ctx.guild.owner_id 
 
 #Purge command.
 @client.command()
-@commands.check(permission_check)
+@commands.check(owner_check)
 async def purge(ctx):
     channel = ctx.message.channel                                                      #Fetches channel, guild from which the command has been issued,
     date = ctx.message.created_at - datetime.timedelta(30)                             #takes date 30 days prior, and the role immune to purge.
