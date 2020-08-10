@@ -38,8 +38,8 @@ async def purge(ctx):
                     else:
                         active_users[message.author.display_name] += 1
 
-        intro = 'Here’s the total activity evaluation regarding the prior 30 days:'         #This creates the embed. It has 3 important string values; introduction,
-        kick = 'Members kicked: '                                                           #activity evaluation (praise_list) and kick message.
+        intro = 'Here’s the total activity evaluation regarding the prior 30 days:'         #This creates the embed. It has 3 important string values;
+        kick = 'Members kicked: '                                                           #introduction, activity evaluation (praise_list) and kick message.
         praise_list = ''
 
         for x, y in active_users.items():                                                   #Creates praise_list based on active_users dictionary.
